@@ -59,5 +59,29 @@ public class ReverseInteger {
 		}
 		
 	}
+
+	public static int[] findTwoSum(int[] arr, int targetSum) {
+		
+		// nested loop through arr- add i to all other indices and compare against targetSum
+		// once find first instance of targetSum, return array of i and i+1 (the indices, not values)
+		
+		// be careful in interviews! If doing comparisons of i and i+1, don't loop until < arr.length! 
+		// (out of bounds error) - easy to do if going to quickly and if you can't run code
+		
+		int[] indices = new int[2];
+		
+		for(int i = 0; i < arr.length - 1; i++) {
+			for(int j = i + 1; j < arr.length; j++) {
+				if(arr[i] + arr[j] == targetSum) {
+					indices[0] = i;
+					indices[1] = j;
+				}
+			}
+			
+		}
+		
+		return indices;
+		
+	}
 	
 }
