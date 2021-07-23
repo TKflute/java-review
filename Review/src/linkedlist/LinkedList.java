@@ -155,4 +155,41 @@ private ListNode head;
 		nodeToSet.setData(data);
 		return nodeToSet.getData();
 	}
+
+	public int indexOf(String data) {
+		//TODO precondition if head is null - use contains()
+		ListNode cNode = head;
+		for(int i = 0; i < this.size(); i++) {
+			if(cNode.getData().contentEquals(data)) {
+				return i;
+			}
+			cNode = cNode.getNextNode();	
+		}
+		return -1;
+	}
+	
+	public int lastIndexOf(String data) {
+		//TODO precondition if head is null - use contains() which should use isEmpty		
+		ListNode cNode = head;
+		int lastIndex = 0;
+		for(int i = 0; i < this.size(); i++) {
+			if(cNode.getData().contentEquals(data)) {
+				lastIndex = i;
+			}
+			cNode = cNode.getNextNode();	
+		}
+		return lastIndex;	
+	}
+	
+	public ListNode[] toArray(ListNode[] nodeArray) {
+		if(this.size() != nodeArray.length) {
+			//TO DO: Handle exception
+			System.out.println("Error in toArray");
+			return null;
+		}
+		for(int i = 0; i < this.size(); i++) {
+			nodeArray[i] = this.get(i);
+		}
+		return nodeArray;	
+	}
 }
