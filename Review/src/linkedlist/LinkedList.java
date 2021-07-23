@@ -46,4 +46,64 @@ private ListNode head;
 		ListNode newNode = new ListNode(data, nodeToMove.getNextNode());
 		nodeToMove.setNextNode(newNode);
 	}
+
+//return # of nodes in list
+	public int size() {
+		
+		int count = 0;
+		ListNode cNode = head;
+		while(cNode != null) {
+			count++;
+			cNode = cNode.getNextNode();
+		}
+		
+		return count; 
+	}
+	
+	public void clear() {
+		head = null;
+	}
+	
+	//delete node at front of list
+	//return null if list is empty
+	
+	public String remove() {
+		//TODO: change this to return boolean
+		if(head == null) {
+			return null;
+		}
+		
+		ListNode oldHead = head;
+		head = oldHead.getNextNode();
+		
+		return oldHead.getData();
+	}
+	
+	public boolean remove(String data) {
+		
+		if(this.contains(data)) {
+			ListNode cNode = head;
+			while(cNode != null) {
+				if(cNode.getData().equals(data)) {
+					ListNode nodeToRemove = cNode;
+					cNode = nodeToRemove.getNextNode();
+					return true;
+				}
+			}
+		}
+		return false;
+		
+	}
+	
+	public String remove(int index) {
+		
+		if(index >= this.size()) {
+			System.out.println("TODO: ERROR in remove");
+			return null;
+		}
+		
+		ListNode nodeToRemove = this.get(index);
+		this.remove(nodeToRemove.getData());
+		return nodeToRemove.getData();
+	}
 }
