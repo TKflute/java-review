@@ -47,7 +47,7 @@ private ListNode head;
 		nodeToMove.setNextNode(newNode);
 	}
 
-//return # of nodes in list
+	//return # of nodes in list
 	public int size() {
 		
 		int count = 0;
@@ -105,5 +105,54 @@ private ListNode head;
 		ListNode nodeToRemove = this.get(index);
 		this.remove(nodeToRemove.getData());
 		return nodeToRemove.getData();
+	}
+
+	//display all the data in the list
+	public void showList() {
+		ListNode cNode = head;
+		while(cNode != null) {
+			System.out.print(cNode.getData() + "-->");
+			cNode = cNode.getNextNode();
+		}
+			
+		System.out.println("NULL");
+	}
+
+	//returns whether item is in list or not
+	public boolean contains(String data) {
+		
+		ListNode cNode = head;
+		while(cNode != null) {
+			if(cNode.getData().equals(data)) {
+				return true;
+			}
+			
+			cNode = cNode.getNextNode();
+		}
+		
+		return false;
+	}
+
+	public boolean isEmpty() {
+		return head == null;
+	}
+
+	public ListNode get(int index) {
+		
+		ListNode cNode = head;
+		for(int i = 0; i < this.size(); i++) {
+			if(i == index) {
+				return cNode;
+			}
+			cNode = cNode.getNextNode();	
+		}
+		return null;
+	}
+	
+	public String set(int index, String data) {
+		
+		ListNode nodeToSet = this.get(index);
+		nodeToSet.setData(data);
+		return nodeToSet.getData();
 	}
 }
