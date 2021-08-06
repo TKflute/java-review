@@ -67,4 +67,25 @@ public class BalancedExpression {
 		}
 		return stack.isEmpty();
 	}
+	
+   // first refactor - using private methods to check for matches
+	public boolean isBalancedStep3(String input) {
+		Stack<Character> stack = new Stack<>();
+
+		for (char ch : input.toCharArray()) {
+			if (isLeftBracket(ch)) {
+				stack.push(ch);
+			}
+			if (isRightBracket(ch)) {
+				if(stack.isEmpty()) {
+					return false; // to avoid an EmptyStackException
+				}
+				var top = stack.pop();
+				if(!bracketsMatch(top, ch)) {
+					return false;
+				}
+			}
+		}
+		return stack.isEmpty();
+	}
 }
