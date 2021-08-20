@@ -2,6 +2,49 @@ package com.interviewquestions;
 import java.util.Random;
 
 public class MissingNumber {
+	
+	public static void main(String[] args) {
+
+		// range for array (1 to 100), can be changed to another range
+		int range = 100;
+		
+		// random number from 1 to 100
+		Random rand = new Random();
+		int exclude = rand.nextInt(range) + 1;
+		//int exclude = 50;  // test case where number right in middle
+
+		// print number picked
+		System.out.println("Number to Remove: " + exclude);
+
+		
+		
+		// create array, make sure one less than the range since we are
+		// taking away a number
+		int[] arr = new int[range - 1];
+
+		// counter for adding number to array
+		int count = 1;
+		
+		// add numbers to array from 1 to 100 excluding one random number
+		for (int i = 0; i < arr.length; i++) {
+
+			if(count != exclude) { // if number is not the excluded, add it to array...
+				arr[i] = count;
+			}
+			else { // ...if it is, decrement i so we don't skip index when adding it to array
+				i--;
+			}
+			
+			count++;
+		}
+		
+		
+		
+		
+		System.out.println( "Missing: " + missingFromArr(arr));
+
+	}
+
 
 
 	public static int missingFromArr(int[] arr) {
