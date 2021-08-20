@@ -15,14 +15,28 @@ public class MissingNumber {
 		int start = 0, end = arr.length - 1;
 		
 		
-		// loop to check if sum of edge points equal our expected sum
 		for(int i = 0; i < arr.length / 2; i++) {
 			
+			// print to see calculations, can be commented out
+			System.out.println(arr[start] + " + " + arr[end] + " = " + (arr[start] + arr[end]));
+			
+			if(arr[start] + arr[end] != expectedSum) { // if sum not expected one...
+				// 2 and 100 = 102
+				
+				if(arr[start] + arr[end] > expectedSum) // if less than expected...
+					return arr[start] - 1; 
+				else
+					return arr[end] + 1; 
+				
+			}
+			
+			start++;
+			end--;
 			
 		}
 		
-		
-		return -1;
+		// if not found above, must be the middle-most number
+		return (arr.length + 1) / 2;
 	}
 
 }
